@@ -6,5 +6,28 @@
     <title>Document</title>
   </head>
   <body></body>
-  <script></script>
+  <script>
+    const keyname = `NF%2Fq2Qd4j83X%2F%2BGBIgSXa02sRgXzX8PKbbn15PVpwZE16Bqu9uaot%2FvnTGhtq808yAE2RDj2LNxM7tkieD%2FU9g%3D%3D`;
+    const ex = `http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=${keyname}&numOfRows=10&pageNo=1`;
+    const getAJAX = () => {
+      const xhr = new XMLHttpRequest();
+      console.log("데이터 받기 전 : " + xhr);
+      xhr.open("GET", ex, true);
+      xhr.addEventListener("load", () => {
+        if (xhr.status === 200) {
+          //status 200이면
+          console.log("데이터 받은 후 조회");
+          console.dir(xhr);
+          //xhr이 객체라는 것을 조회하기 위한 코드이다.
+          const result = JSON.parse(xhr.responseText);
+          //responseText는 서버가 전송한 HTTP 요청에 대한 응답 문자열이라고 한다. rep
+          console.dir(result);
+          console.dir(result.msgBody[0].title);
+          //result는 JSON인 것을 알 수 있다.
+        }
+      });
+      xhr.send();
+    };
+    getAJAX();
+  </script>
 </html>

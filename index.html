@@ -29,8 +29,8 @@
           console.dir(result.msgBody[0].title);
           const arr = [];
           result.msgBody.forEach((element) => {
-            arr.push(element.title);
-            root.innerHTML = `${arr}`;
+            arr.push(`<li>${element.title}</li>`);
+            root.innerHTML = `<ul>${arr.join("")}</ul>`;
             console.log(element.title);
           });
         }
